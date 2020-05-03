@@ -3,12 +3,12 @@ const HORIZON = 'horizon'
 const VERTICAL = 'vertical'
 
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiemhlbmZ1IiwiYSI6ImNpb284bzNoYzAwM3h1Ym02aHlrand6OTAifQ.sKX-XKJMmgtk_oI5oIUV_g'
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ3V6aG9uZ3JlbiIsImEiOiJjajh0Z3ZvNXowbHF6MzNxenpoaTlqZnh0In0.UjqQlTKebjUEfWD6ZlVV7g'
 const map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/satellite-v9',
-  center: [-74.50, 40],
-  zoom: 9,
+  style: 'mapbox://styles/guzhongren/ck9qomecy5v3z1is8k9cynq6r',
+  center: [104.757, 35.116],
+  zoom: 1,
   preserveDrawingBuffer: true
 })
 
