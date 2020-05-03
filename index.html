@@ -17,15 +17,51 @@
 
 <body>
   <div id='map'></div>
-
+  
   <div class="card export-setting">
     <div class="card-header">
       导出设置
     </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a id="downloadLink" class="btn btn-primary" href="" download="map.png">Download ↓</a>
+
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#default" role="tab" aria-controls="模版" aria-selected="true">模版</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#custom" role="tab" aria-controls="自定义大小" aria-selected="false">自定义大小</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="default" role="tabpanel" aria-labelledby="home-tab">
+          <form>
+            <div class="form-row">
+              <div class="col-md-4 mb-3 form-group">
+                <label for="validationDefault01">分辨率（DPI）</label>
+                <input type="number" class="form-control" id="dpi" value="300" placeholder="300">
+              </div>
+              <div class="col-md-3 mb-3 form-group">
+                <label for="validationDefault04">机型</label>
+                <select class="form-control" id="mobileModel" required>
+                  <option selected value="*">请选择</option>
+                  <option value="144.0*71.4">iPhone 11 Pro</option>
+                  <option value="158.0*77.8">iPhone 11 Pro Max</option>
+                </select>
+              </div>
+              <div class="col-md-3 mb-3 form-group">
+                <label for="validationDefault04">方向</label>
+                <select class="form-control" id="mobilDirection" required>
+                  <option selected value="vertical">竖直</option>
+                  <option value="horizon">水平</option>
+                  <option>...</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="custom" role="tabpanel" aria-labelledby="profile-tab">...</div>
+      </div>
+      <a id="exportLink" class="btn btn-primary export" href="" download="map.png">Download ↓</a>
     </div>
   </div>
   <div class="export-panel">
