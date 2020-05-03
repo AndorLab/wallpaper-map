@@ -1,0 +1,12 @@
+html,body,#map{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+}
+.export-setting{
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}

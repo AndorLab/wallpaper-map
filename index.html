@@ -1,86 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>maptalks.mapboxgl demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maptalks/dist/maptalks.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/maptalks@^0.40.2/dist/maptalks.min.js"></script>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
-    <script type="text/javascript" src="https://unpkg.com/maptalks.mapboxgl/dist/maptalks.mapboxgl.min.js"></script>
-    <style>
-        html,body{
-            margin:0px;
-        }
-        #map {
-            width: 100%;
-            height:600px;
-        }
-    </style>
+  <meta charset='utf-8' />
+  <title>Map Wallpaper Creator</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-<div><a href="javascript:start();">start</a> | <a href="javascript:pause();">pause</a> | <a href="javascript:reset();">reset</a></div></div>
-<div id="map"></div>
-<script type="text/javascript" >
-    mapboxgl.accessToken = 'pk.eyJ1IjoiemhlbmZ1IiwiYSI6ImNpb284bzNoYzAwM3h1Ym02aHlrand6OTAifQ.sKX-XKJMmgtk_oI5oIUV_g';
+  <div id='map'></div>
 
-    var baseLayer = new maptalks.MapboxglLayer('tile',{
-        glOptions : {
-            'style' : 'mapbox://styles/mapbox/light-v9'
-        }
-    }).on('layerload', function () {
-        start();
-    });
+  <div class="card export-setting">
+    <div class="card-header">
+      导出设置
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a id="downloadLink" class="btn btn-primary" href="" download="map.png">Download ↓</a>
+    </div>
+  </div>
+  <div class="export-panel">
+  </div>
 
-    var map = new maptalks.Map("map",{
-        //limit max pitch to 60 as mapbox-gl-js required
-        maxPitch : 60,
-        center:   [-0.138183, 51.44456],
-        zoom   :  10,
-        baseLayer : baseLayer
-    });
+  <script src='./index.js'></script>
 
-    var pitch = 0, d = 'up', bearing = 0;
-    var paused = true;
-
-    function changeView() {
-      if (pitch > 50) {
-        d = 'down';
-      } else if (pitch < 0) {
-        d = 'up';
-      }
-      if (d === 'down') {
-        pitch--;
-      } else {
-        pitch++;
-      }
-      map.setPitch(pitch);
-      map.setBearing(bearing++);
-      if (!paused) {
-        requestAnimationFrame(changeView);
-      }
-    }
-
-    function reset() {
-      requestAnimationFrame(function () {
-        paused = true;
-        pitch = 0;
-        bearing = 0;
-        map.setPitch(0);
-        map.setBearing(0);
-      });
-    }
-
-    function start() {
-        if(paused){
-            paused = false;
-            changeView();
-        }
-    }
-
-    function pause() {
-        paused = true;
-    }
-</script>
 </body>
+
 </html>
